@@ -8,6 +8,7 @@ y = np.array([2,4,6,8,10])
 q0=0
 q1=0
 alpha = 0.1
+
  # if the learning rate is too small eg: 0.001, it will take a large number of epoches to converge
 
 # Hypothesis function
@@ -19,14 +20,21 @@ def error(predicted_value, actual_value):
     return predicted_value - actual_value
 
 # Gradient descent function
-def gradient_descent(alpha, x, y, q0, q1,epoches):
+def gradient_descent(alpha, Q0, Q1, x, y, epoches):
     m = len(x)
     for i in range(epoches):
-        q0 = q0 - alpha * (1/m) * np.sum(error(predict(x, q0, q1),y)* 1)
-        q1 = q1 - alpha * (1/m) * np.sum(error(predict(x, q0, q1),y)* x)
-    return q0, q1
+        y_pred = predict(Q0, Q1, x)
+        error = error_function(y_pred, y)
+        # Visualize in terms of vectors
+        gradient_Q0 = (1/m) * np.sum(error)        
+        gradient_Q1 = (1/m) * np.sum(error * x) 
+        
+        Q0 = Q0 - alpha * gradient_Q0
+        Q1 = Q1 - alpha * gradient_Q1
+        
+    return Q0, Q1
 
-q0 , q1 = gradient_descent(alpha, x, y , q0, q1,1000)
+q0 , q1 = gradient_descent(alpha, x, y, q0, q1, 1000)
 
 # Prepare data for plotting
 x_data = x

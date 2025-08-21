@@ -1,7 +1,7 @@
 # 🧠 ML – My Machine Learning Practices & Projects
 
 Welcome to my **ML playground** 🚀  
-This is where I learn, experiment, and build with **Machine Learning projects** — from scratch implementations to full-fledged projects.
+This is where I learn, experiment, and build with **Machine Learning algorithms** — from scratch implementations to full-fledged projects.
 
 ---
 
